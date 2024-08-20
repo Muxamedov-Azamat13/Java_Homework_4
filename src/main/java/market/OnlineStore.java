@@ -1,10 +1,5 @@
 package market;
 
-import market.exception.AmountException;
-import market.exception.CustomerException;
-import market.exception.ProductException;
-
-import java.security.PublicKey;
 import java.time.LocalDate;
 
 public class OnlineStore {
@@ -29,36 +24,28 @@ public class OnlineStore {
     public static void congratulations(Customer[] buyers, Holiday holiday){
         for (Customer c : buyers){
             switch (holiday){
-                case NO_HOLIDAY -> {
-                    System.out.println("Нет праздника " + c.getName());
-                    break;
-                }
-                case NEW_YEAR -> {
-                    System.out.println("С новым годом " + c.getName());
-                    break;
-                }
+                case NO_HOLIDAY -> System.out.println("Нет праздника " + c.getName());
+
+                case NEW_YEAR -> System.out.println("С новым годом " + c.getName());
+
                 case MARCH_8 -> {
                     if (c.getGender() == Customer.Gender.FEMALE){
                         System.out.println("С 8 мартом " + c.getName());
                     }
-                    break;
                 }
                 case FEBRUARY_28 -> {
                     if (c.getGender() == Customer.Gender.MALE){
                         System.out.println("С 28 февралом " + c.getName());
                     }
-                    break;
                 }
-                default -> {
-                    System.out.println("Сегодня нет праздника!");
-                    break;
-                }
+                default -> System.out.println("Сегодня нет праздника!");
+
             }
         }
     }
 
-    public Customer buyers[];
-    public Product products[];
+    public Customer[] buyers;
+    public Product[] products;
 
     public OnlineStore(Customer[] buyers, Product[] products) {
         this.buyers = buyers;
