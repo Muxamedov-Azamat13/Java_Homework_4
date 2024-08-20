@@ -65,32 +65,5 @@ public class OnlineStore {
         this.products = products;
     }
 
-    public Order makePurchase(String buyerName, String product, int count)
-            throws CustomerException, ProductException, AmountException {
-
-        if (count <= 0 || count > 100) {
-            throw new AmountException("Количество товара не должно быть пустым!");
-        }
-
-        Customer customer = null;
-        for (Customer c : buyers)
-            if (c.name.equals(buyerName)) {
-                customer = c;
-                break;
-            }
-        if (customer == null) throw new CustomerException("Пустой покупатель!");
-
-        Product product1 = null;
-        for (Product p : products) {
-            if (p.name.equals(product)) {
-                product1 = p;
-                break;
-            }
-        }
-        if (product1 == null) throw new ProductException("Пустой продукт");
-
-        return new Order(customer, product1, count);
-    }
-
 
 }
